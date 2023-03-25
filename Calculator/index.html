@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body{
+            background-image: conic-gradient(from 90deg at 50% 125%, #1f005c, #003298, #005ac6, #007fdc, #00a2d3, #00c4ae, #00e474, #00ff00, #1f005c, #003298, #005ac6, #007fdc, #00a2d3, #00c4ae, #00e474, #00ff00);
+        }
+        .container{
+            width: auto;
+            height: 100vh;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .calculator{
+            padding: 30px;
+            background-color: rgba(163, 23, 238, 0.866);
+            border-radius: 10px;
+            box-shadow: 0px 0px 60px 5px rgba(0, 0, 0, 0.423);
+        }
+        #input{
+            width: 340px;
+            height: 70px;
+            font-size: xx-large;
+            border: solid 1px rgba(216, 204, 241, 0.156);
+            text-align: right;
+            direction: ltr;
+            background-color: rgba(216, 204, 241, 0.556);
+            border-radius: 5px;
+            font-weight: 400;
+            font-size: 2.5rem;
+        }
+        .button{
+            height: 60px;
+            width: 80px;
+            padding: 15px;
+            margin-top: 8px;
+            margin-left: 0;
+            margin-right: 5px;
+            border-radius: 5px;
+            border: solid 1px rgba(72, 7, 107, 0.866);
+            font-size: larger;
+            background-color: rgba(163, 23, 238, 0.866);
+            box-shadow: 0px 0px 30px -5px rgba(0, 0, 0, 0.5);
+        }
+        #equal{
+            width: 250px;
+            margin-left: 45px;
+        }
+        .button:hover{
+            background-color: rgba(0, 0, 0, 0.352);
+        }
+        #equal:hover{
+            background-color: #0059c688;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <input type="text" id="input" placeholder="0">
+            <br>
+            <button class="button" onclick="press(7)">7</button>
+            <button class="button" onclick="press(8)">8</button>
+            <button class="button" onclick="press(9)">9</button>
+            <button class="button" onclick="Clear()">C</button>
+            <br>
+            <button class="button" onclick="press(4)">4</button>
+            <button class="button" onclick="press(5)">5</button>
+            <button class="button" onclick="press(6)">6</button>
+            <button class="button" onclick="press('+')">+</button>
+            <br>
+            <button class="button" onclick="press(1)">1</button>
+            <button class="button" onclick="press(2)">2</button>
+            <button class="button" onclick="press(3)">3</button>
+            <button class="button" onclick="press('-')">-</button>
+            <br>
+            <button class="button" onclick="press('.')">.</button>
+            <button class="button" onclick="press(0)">0</button>
+            <button class="button" onclick="press('/')">/</button>
+            <button class="button" onclick="press('*')">*</button>
+            <br>
+            <button class="button" onclick="equal()" id="equal">=</button>
+        </div>
+    </div>
+    <script>
+        var Input = document.getElementById('input');
+        var expression = '';
+        function press(n){
+            expression += n;
+            Input.value = expression;
+        }
+        function Clear(){
+            expression = '';
+            Input.value = expression;
+        }
+        function equal(){
+            var result = eval(expression);
+            Input.value = result;
+        }
+    </script>
+</body>
+</html>
