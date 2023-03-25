@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap//bootstrap-5.3.0-alpha1-dist//css//bootstrap.min.css">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+        body{
+            font-family: 'Inconsolata', monospace;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+    <script>
+        function colorChange(){
+            var array = ['1','2','3','4','5','6','7','A','B','C','D','E','F'];
+            var hexa_code = '';
+            for (let index = 0; index < 6; index++) {
+                var ele = (Math.floor(Math.random()*array.length));
+                hexa_code += array[ele];   
+            }
+            document.getElementsByTagName('body')[0].style.background = "#" + hexa_code;
+            document.getElementById('code').innerHTML = hexa_code;
+        }
+        
+    </script>
+</head>
+<body>
+    <div>
+        <h1>The hexa code of the background-color is #<span id="code">0000</span></h1>
+    </div>
+    <button type="button" class="btn btn-primary" onclick="colorChange()">Click Me</button>
+</body>
+</html>
