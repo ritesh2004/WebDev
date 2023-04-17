@@ -65,25 +65,30 @@
         <div class="calculator">
             <input type="text" id="input" placeholder="0">
             <br>
+            <button class="button" onclick="press('(')">(</button>
+            <button class="button" onclick="press(')')">)</button>
+            <button class="button" onclick="del()">del</button>
+            <button class="button" onclick="Clear()">clear</button>
+            <br>
             <button class="button" onclick="press(7)">7</button>
             <button class="button" onclick="press(8)">8</button>
             <button class="button" onclick="press(9)">9</button>
-            <button class="button" onclick="Clear()">C</button>
+            <button class="button" onclick="press('+')">+</button>
             <br>
             <button class="button" onclick="press(4)">4</button>
             <button class="button" onclick="press(5)">5</button>
             <button class="button" onclick="press(6)">6</button>
-            <button class="button" onclick="press('+')">+</button>
+            <button class="button" onclick="press('-')">-</button>
             <br>
             <button class="button" onclick="press(1)">1</button>
             <button class="button" onclick="press(2)">2</button>
             <button class="button" onclick="press(3)">3</button>
-            <button class="button" onclick="press('-')">-</button>
+            <button class="button" onclick="press('*')">x</button>
             <br>
             <button class="button" onclick="press('.')">.</button>
             <button class="button" onclick="press(0)">0</button>
+            <button class="button" onclick="press('-')">+/-</button>
             <button class="button" onclick="press('/')">/</button>
-            <button class="button" onclick="press('*')">*</button>
             <br>
             <button class="button" onclick="equal()" id="equal">=</button>
         </div>
@@ -100,9 +105,21 @@
             Input.value = expression;
         }
         function equal(){
-            var result = eval(expression);
-            Input.value = result;
+            try {
+                var result = eval(expression);
+                Input.value = result;
+                var store = result;
+            } catch (error) {
+                alert('Invalid Input')
+            }
+            
         }
+        function del(){
+            Input.value = Input.value.slice(0,-1);
+            expression = Input.value.slice(0,-1);
+        }
+        
+
     </script>
 </body>
 </html>
