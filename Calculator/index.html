@@ -65,40 +65,56 @@
         <div class="calculator">
             <input type="text" id="input" placeholder="0">
             <br>
-            <button class="button" onclick="press('(')">(</button>
-            <button class="button" onclick="press(')')">)</button>
-            <button class="button" onclick="del()">del</button>
-            <button class="button" onclick="Clear()">clear</button>
+            <button class="button" value="(" >(</button>
+            <button class="button" value=")">)</button>
+            <button class="button" value="del">del</button>
+            <button class="button" value="clear">clear</button>
             <br>
-            <button class="button" onclick="press(7)">7</button>
-            <button class="button" onclick="press(8)">8</button>
-            <button class="button" onclick="press(9)">9</button>
-            <button class="button" onclick="press('+')">+</button>
+            <button class="button" value="7">7</button>
+            <button class="button" value="8">8</button>
+            <button class="button" value="9">9</button>
+            <button class="button" value="+">+</button>
             <br>
-            <button class="button" onclick="press(4)">4</button>
-            <button class="button" onclick="press(5)">5</button>
-            <button class="button" onclick="press(6)">6</button>
-            <button class="button" onclick="press('-')">-</button>
+            <button class="button" value="4">4</button>
+            <button class="button" value="5">5</button>
+            <button class="button" value="6">6</button>
+            <button class="button" value="-">-</button>
             <br>
-            <button class="button" onclick="press(1)">1</button>
-            <button class="button" onclick="press(2)">2</button>
-            <button class="button" onclick="press(3)">3</button>
-            <button class="button" onclick="press('*')">x</button>
+            <button class="button" value="1">1</button>
+            <button class="button" value="2">2</button>
+            <button class="button" value="3">3</button>
+            <button class="button" value="*">x</button>
             <br>
-            <button class="button" onclick="press('.')">.</button>
-            <button class="button" onclick="press(0)">0</button>
-            <button class="button" onclick="press('-')">+/-</button>
-            <button class="button" onclick="press('/')">/</button>
+            <button class="button" value=".">.</button>
+            <button class="button" value="0">0</button>
+            <button class="button" value="-">+/-</button>
+            <button class="button" value="/">/</button>
             <br>
-            <button class="button" onclick="equal()" id="equal">=</button>
+            <button class="button" value="equal" onclick="equal()" id="equal">=</button>
         </div>
     </div>
     <script>
         var Input = document.getElementById('input');
+        var buttons = document.querySelectorAll('button');
         var expression = '';
-        function press(n){
-            expression += n;
-            Input.value = expression;
+        console.log(buttons)
+        for (let index = 0; index < buttons.length; index++) {
+            const element = buttons[index];
+            element.addEventListener('click',(e)=>{
+                if (e.target.value === "equal"){
+                    equal();
+                }
+                else if (e.target.value === "clear") {
+                    Clear();
+                }
+                else if (e.target.value === "del") {
+                    del();
+                }
+                else{
+                    expression += e.target.value;
+                    Input.value = expression;
+                }
+            })
         }
         function Clear(){
             expression = '';
@@ -116,8 +132,9 @@
         }
         function del(){
             Input.value = Input.value.slice(0,-1);
-            expression = Input.value.slice(0,-1);
+            expression = Input.value;
         }
+        
         
 
     </script>
